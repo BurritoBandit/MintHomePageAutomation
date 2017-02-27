@@ -32,7 +32,7 @@ WebDriver driver;
 				
 		WebDriverWait wait = new WebDriverWait(driver,10);
 		
-		//Open Mint homepage
+		//Open Mint home page
 		driver.get("https://www.mint.com");
 		
 		//Assert the title appears as expected
@@ -155,6 +155,7 @@ WebDriver driver;
 		Assert.assertEquals("Mint: Safe & Secure",driver.getTitle());
 		Assert.assertEquals("https://www.mint.com/how-mint-works/security", driver.getCurrentUrl());
 		driver.close();
+		
 	}
 
 }
