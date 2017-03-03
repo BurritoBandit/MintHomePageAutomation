@@ -27,7 +27,7 @@ WebDriver driver;
 		
 		
 		//driver = new FirefoxDriver();
-		driver = new ChromeDriver(); 
+		driver = new ChromeDriver();
 		//driver = new InternetExplorerDriver();
 				
 		WebDriverWait wait = new WebDriverWait(driver,10);
@@ -36,7 +36,7 @@ WebDriver driver;
 		driver.get("https://www.mint.com");
 		
 		//Assert the title appears as expected
-		Assert.assertEquals("Mint: Money Manager, Bill Pay, Credit Score, Budgeting & Investing",driver.getTitle());
+		Assert.assertEquals("Mint: Personal Finance, Money Manager, Bill Pay, Credit Score, Budgeting & Investing",driver.getTitle());
 		
 		driver.findElement(By.className("btn-primary")).click();
 		//The "sign up free" button actually had a compound class name, which isn't supported by Selenium. I had to choose one of the class names
@@ -78,7 +78,7 @@ WebDriver driver;
 		//I will back out as to not create a fake account
 		driver.navigate().back();
 		//Assertion to verify I'm back at the home page
-		Assert.assertEquals("Mint: Money Manager, Bill Pay, Credit Score, Budgeting & Investing",driver.getTitle());
+		Assert.assertEquals("Mint: Personal Finance, Money Manager, Bill Pay, Credit Score, Budgeting & Investing",driver.getTitle());
 
 		//Navigate to How It Works
 		driver.findElement(By.linkText("HOW IT WORKS")).click();
@@ -130,8 +130,8 @@ WebDriver driver;
 		//Navigate to home page using the Mint Icon on the upper left corner of the page
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("logo-link")));
 		driver.findElement(By.id("logo-link")).click();
-		wait.until(ExpectedConditions.titleContains("Mint: Money Manager, Bill Pay, Credit Score, Budgeting & Investing"));
-		Assert.assertEquals("Mint: Money Manager, Bill Pay, Credit Score, Budgeting & Investing",driver.getTitle());
+		wait.until(ExpectedConditions.titleContains("Mint: Personal Finance, Money Manager, Bill Pay, Credit Score, Budgeting & Investing"));
+		Assert.assertEquals("Mint: Personal Finance, Money Manager, Bill Pay, Credit Score, Budgeting & Investing",driver.getTitle());
 		
 		//Navigate to "How It Works -> Track & pay bills" using the "Learn More" link under "Effortlessly stay on top of bills"
 		driver.findElement(By.linkText("Learn more")).click();
@@ -142,8 +142,8 @@ WebDriver driver;
 			driver.switchTo().window(tabs2.get(1));
 				
           //assert user is on the right page
-	    	wait.until(ExpectedConditions.titleContains("Mint: Budget, Budgeting Goals"));
-	    	Assert.assertEquals("Mint: Budget, Budgeting Goals",driver.getTitle());
+	    	wait.until(ExpectedConditions.titleContains("Mint Bill Pay: Bill Reminders, Bill Tracking, Online Bill Payment"));
+	    	Assert.assertEquals("Mint Bill Pay: Bill Reminders, Bill Tracking, Online Bill Payment",driver.getTitle());
 	    	Assert.assertEquals("https://www.mint.com/how-mint-works/bills#toc", driver.getCurrentUrl());
 	    	driver.close();
 	      //switch selenium's focus to initial tab
@@ -154,6 +154,8 @@ WebDriver driver;
 		wait.until(ExpectedConditions.titleContains("Mint: Safe & Secure"));
 		Assert.assertEquals("Mint: Safe & Secure",driver.getTitle());
 		Assert.assertEquals("https://www.mint.com/how-mint-works/security", driver.getCurrentUrl());
+		
+		System.out.println("success");
 		driver.close();
 		
 	}
